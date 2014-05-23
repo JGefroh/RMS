@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.6.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.6.0/distro-source/core/src/gwt-module.dtd">
+<module rename-to='RMS'>
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='com.google.gwt.activity.Activity' />
+	<inherits name="com.google.gwt.resources.Resources" />
+    <inherits name="com.google.gwt.logging.Logging"/>
+	<!-- <inherits name="com.google.gwt.logging.Logging"/> -->
+	<inherits name='com.google.gwt.user.theme.clean.Clean' />
+
+	<entry-point class='com.jgefroh.rms.client.Main' />
+	<extend-property name="locale" values="en" />
+	<set-property-fallback name="locale" value="en" />
+	<source path='client' />
+	<source path='shared' />
+
+	<!-- Source of the view implementations - uses ClientFactoryImpl by default -->
+	<replace-with class="com.jgefroh.rms.client.util.ClientFactoryImpl">
+		<when-type-is class="com.jgefroh.rms.client.util.ClientFactory" />
+	</replace-with>
+	
+	<!-- Stubbing services since there is no server-side. -->
+    <replace-with class="com.jgefroh.rms.client.services.stubs.UserServiceStubImpl">
+        <when-type-is class="com.jgefroh.rms.client.services.UserService" />
+    </replace-with>
+    <replace-with class="com.jgefroh.rms.client.services.stubs.LoginServiceStubImpl">
+        <when-type-is class="com.jgefroh.rms.client.services.LoginService" />
+    </replace-with>
+
+
+	<!-- allow Super Dev Mode -->
+	<add-linker name="xsiframe" />
+	<set-configuration-property name="devModeRedirectEnabled"
+		value="true" />
+
+	<set-property name="gwt.logging.logLevel" value="ALL" />
+	<set-property name="gwt.logging.enabled" value="TRUE" />
+	<set-property name="gwt.logging.consoleHandler" value="DISABLED" />
+</module>

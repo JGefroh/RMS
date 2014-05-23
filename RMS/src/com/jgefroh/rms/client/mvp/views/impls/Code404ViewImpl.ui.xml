@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder    xmlns:ui="urn:ui:com.google.gwt.uibinder"
+                xmlns:g="urn:import:com.google.gwt.user.client.ui">
+   <ui:with field="msg" type="com.jgefroh.rms.client.resources.MessageConstants"/>
+   <ui:with field="res" type="com.jgefroh.rms.client.resources.Resources" />
+                
+	<ui:style>
+	</ui:style>
+
+    <g:HTMLPanel>
+		  <div class="col-md-9">
+		      <div class="page-header">
+        		  <h2>Oops, we couldn't find the page you requested.
+        		  <br />
+		    		  <span class="small">
+	        		      Sorry about that!
+		    		  </span>
+	    		  </h2>
+		      </div>
+    		  Click your browser's "Back" button to go back to the previous page, or go to a new place from the navigation menu.
+		  </div>
+    </g:HTMLPanel>
+	
+	
+</ui:UiBinder>

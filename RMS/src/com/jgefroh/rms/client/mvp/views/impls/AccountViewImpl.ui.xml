@@ -1,0 +1,109 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:composites="urn:import:com.jgefroh.rms.client.mvp.views.composites"
+	xmlns:widgets="urn:import:com.jgefroh.rms.client.mvp.views.widgets">
+	<ui:with field="msg" type="com.jgefroh.rms.client.resources.MessageConstants" />
+	<ui:with field="res" type="com.jgefroh.rms.client.resources.Resources" />
+
+	<ui:style>
+	
+	</ui:style>
+
+	<g:HTMLPanel>
+		<div class="col-md-9">
+            <composites:AlertPanel ui:field="alertPanel" />
+			<div class="page-header">
+				<h2>
+					RMS - My Account
+					<br />
+					<span class="small">
+						You can view and change your account settings
+						here.
+					</span>
+				</h2>
+			</div>
+			<div class="form-group has-feedback col-md-3">
+				<label class="control-label">Your Username</label>
+				<p class="form-control-static">guest</p>
+			</div>
+			<div class="form-group has-feedback">
+				<label class="control-label">Roles you've been assigned:</label>
+				<p class="form-control-static">admin, creator, reviewer</p>
+			</div>
+
+			<br />
+			
+			<p>
+		      <span class="required-symbol">*</span> indicates a required field - they can't be blank!
+			</p>
+
+			<!-- Profile Information -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Profile Information</h3>
+				</div>
+				<div class="panel-body">
+				    <widgets:TextField ui:field="fullname" label="Full Name" help="This name will be visible to other users." required="true" />
+                    <widgets:TextField ui:field="nickname" label="What should we call you?" help="We'll use this name in email notifications." required="true"/>
+				</div>
+			</div>
+
+			<br />
+
+			<!-- Profile Information -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Account Settings</h3>
+				</div>
+				<div class="panel-body">
+                    <widgets:TextField      ui:field="email"            label="Email Address"     help="We'll send email notifications to this address." />
+                    <widgets:PasswordField  ui:field="newPassword"      label="New Password"      help="New passwords should be at least 8 characters long." />
+                    <widgets:StrengthMeter  ui:field="strengthMeter"    label="Password Strength" help="Improve your password: use letters, symbols, and digits." />
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-xs-6"> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<label class="control-label">Password Strength: </label> -->
+<!-- 								<div class="progress"> -->
+<!-- 									<div ui:field="passwordStrengthWeak" class="progress-bar progress-bar-success" -->
+<!-- 										style="width: 25%"> -->
+<!-- 										<span ui:field="passwordStrengthWeakLabel">Weak</span> -->
+<!-- 									</div> -->
+<!-- 									<div ui:field="passwordStrengthMedium" class="progress-bar progress-bar-info" -->
+<!-- 										style="width: 25%"> -->
+<!-- 										<span ui:field="passwordStrengthMediumLabel">Medium</span> -->
+<!-- 									</div> -->
+<!-- 									<div ui:field="passwordStrengthBetter" class="progress-bar progress-bar-warning" -->
+<!-- 										style="width: 25%"> -->
+<!-- 										<span ui:field="passwordStrengthBetterLabel">Better</span> -->
+<!-- 									</div> -->
+<!-- 									<div ui:field="passwordStrengthStrong" class="progress-bar progress-bar-danger" -->
+<!-- 										style="width: 25%"> -->
+<!-- 										<span ui:field="passwordStrengthStrongLabel">Strong</span> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-xs-6"> -->
+<!-- 							<div class="label-spacer"></div> -->
+<!-- 							<p class="help-block fieldMessage">Improve your password: use letters, symbols, and -->
+<!-- 								digits.</p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+				</div>
+
+			</div>
+
+			<br />
+
+
+			<!-- Change Password -->
+			<g:Button ui:field="btnSave" styleName="btn btn-success">
+				<span class="glyphicon glyphicon-floppy-disk" />
+				Save Changes
+			</g:Button>
+		</div>
+	</g:HTMLPanel>
+
+
+</ui:UiBinder>

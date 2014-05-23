@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:d="urn:import:com.google.gwt.user.datepicker.client">
+	
+	<ui:with field="msg" type="com.jgefroh.rms.client.resources.MessageConstants" />
+	<ui:with field="res" type="com.jgefroh.rms.client.resources.Resources" />
+
+	<ui:style>
+		.preventCollapse {
+		   height: 1em;
+		}
+	</ui:style>
+
+    <g:HTMLPanel addStyleNames="row">
+	    <div ui:field="inputSection" class="col-xs-6">
+	        <div           ui:field="group"    class="form-group has-feedback">
+                <label     ui:field="label"    class="control-label"> <span ui:field="required" class="required-symbol" /></label>
+	            <g:TextBox ui:field="field"    styleName="form-control" />
+	            <span      ui:field="glyph"    class="glyphicon form-control-feedback" />
+	            <span      ui:field="message"  class="help-block {style.preventCollapse}" />
+	        </div>
+	    </div>
+	    <div ui:field="helpSection" class="col-xs-6">
+	        <div class="label-spacer" />
+	        <p ui:field="help" class="help-block {style.preventCollapse}"></p>
+	    </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

@@ -1,0 +1,35 @@
+@def selectionBorderWidth 2px;
+.cellTableWidget {
+	z-index: 2;
+}
+
+.cellTableFirstColumn {}
+.cellTableLastColumn {}
+.cellTableFooter {}
+.cellTableHeader {
+	text-shadow: none;
+	color: #000;
+}
+.cellTableCell {
+	border-width: 0px;
+	overflow:visible;
+}
+.cellTableFirstColumnFooter {}
+.cellTableFirstColumnHeader {}
+.cellTableLastColumnFooter {}
+.cellTableLastColumnHeader {}
+.cellTableSortableHeader {}
+.cellTableSortableHeader:hover {}
+.cellTableSortedHeaderAscending {}
+.cellTableSortedHeaderDescending {}
+.cellTableEvenRow {}
+.cellTableEvenRowCell {}
+.cellTableOddRow {}
+.cellTableOddRowCell {}
+.cellTableHoveredRow {}
+.cellTableHoveredRowCell {}
+.cellTableKeyboardSelectedRow {}
+.cellTableKeyboardSelectedRowCell {}
+.cellTableSelectedRow {}
+.cellTableSelectedRowCell {}
+.cellTableKeyboardSelectedCell {}

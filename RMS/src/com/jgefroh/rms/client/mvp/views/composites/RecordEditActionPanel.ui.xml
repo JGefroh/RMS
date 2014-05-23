@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:com.google.gwt.user.datepicker.client">
+	<ui:with field="msg"
+		type="com.jgefroh.rms.client.resources.MessageConstants" />
+	<ui:with field="res" type="com.jgefroh.rms.client.resources.Resources" />
+
+	<ui:style>
+	
+	</ui:style>
+
+	<g:HTMLPanel>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Actions</h3>
+			</div>
+			<div class="panel-body">
+				<g:Button ui:field="btnSave" styleName="btn btn-success"
+					title="Save your changes to the record.">
+					<span class="glyphicon glyphicon-floppy-disk" />
+					Save Changes
+				</g:Button>
+				<g:Button ui:field="btnExamine" styleName="btn btn-warning"
+					title="View the record as a read-only PDF.">
+					<span class="glyphicon glyphicon-eye-open" />
+					View the Form
+				</g:Button>
+				<g:Button ui:field="btnSubmit" styleName="btn btn-danger pull-right"
+					title="Send the record to reviewers as-is.">
+					<span class="glyphicon glyphicon-send" />
+					Send for Review
+				</g:Button>
+			</div>
+		</div>
+	</g:HTMLPanel>
+
+
+</ui:UiBinder>

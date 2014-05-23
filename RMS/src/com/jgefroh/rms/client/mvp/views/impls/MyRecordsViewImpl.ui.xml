@@ -1,0 +1,56 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder    xmlns:ui="urn:ui:com.google.gwt.uibinder"
+                xmlns:g="urn:import:com.google.gwt.user.client.ui"  
+                xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+   <ui:with field="msg" type="com.jgefroh.rms.client.resources.MessageConstants"/>
+   <ui:with field="res" type="com.jgefroh.rms.client.resources.Resources" />
+                
+	<ui:style>
+	   .create-btn-margin {
+            margin-top: 1.7em;
+	   }
+	</ui:style>
+
+    <g:HTMLPanel>
+		  <div class="col-md-9">
+		      <div class="page-header">
+        		  <h2>RMS - My Records
+        		  <br />
+		    		  <span class="small">
+	        		      You can create new records or continue working on ones drafts here.
+		    		  </span>
+	    		  </h2>
+		      </div>
+		      
+		      <div class="row">
+	              <div class="col-md-9">
+	                  <div class="form-group">
+	                      <label class="control-label">Record Type</label>
+	                      <select class="form-control">
+							  <option>Book</option>
+							  <option>Proposal Request</option>
+							  <option>Incident Report</option>
+						  </select>
+	                      <span ui:field="recordTypeMessage" class="help-block fieldMessage"></span>
+	                  </div>
+	              </div>
+	              <div class="col-xs-3">
+	                  <g:Button ui:field="btnCreate" styleName="btn btn-success {style.create-btn-margin}">
+	                      <span class="glyphicon glyphicon-plus" /> Create Record
+	                  </g:Button>
+	              </div>
+		      </div>
+		      <div class="row">
+		          <div class="col-xs-12">
+		              <h4>My Draft Records<span class="small"> - these are records you have saved and not yet submitted.</span></h4>
+		          </div>
+		          <div class="col-xs-12">
+				      <c:CellTable ui:field="myRecordsTable" addStyleNames="table table-striped table-hover" />
+		          </div>
+		      </div>
+		      
+		  </div>
+    </g:HTMLPanel>
+	
+	
+</ui:UiBinder>

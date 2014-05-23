@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:d="urn:import:com.google.gwt.user.datepicker.client">
+	
+	<ui:with field="msg" type="com.jgefroh.rms.client.resources.MessageConstants" />
+	<ui:with field="res" type="com.jgefroh.rms.client.resources.Resources" />
+
+	<ui:style>
+	</ui:style>
+
+    <g:HTMLPanel addStyleNames="row">
+		<div ui:field="inputSection" class="col-xs-6">
+			<div class="form-group">
+				<label ui:field="label" class="control-label" />
+				<div class="progress">
+					<div ui:field="passwordStrengthWeak" class="progress-bar progress-bar-success" style="width: 25%">
+						<span ui:field="passwordStrengthWeakLabel">Weak</span>
+					</div>
+					<div ui:field="passwordStrengthMedium" class="progress-bar progress-bar-info" style="width: 25%">
+						<span ui:field="passwordStrengthMediumLabel">Medium</span>
+					</div>
+					<div ui:field="passwordStrengthBetter" class="progress-bar progress-bar-warning" style="width: 25%">
+						<span ui:field="passwordStrengthBetterLabel">Better</span>
+					</div>
+					<div ui:field="passwordStrengthStrong" class="progress-bar progress-bar-danger"	style="width: 25%">
+						<span ui:field="passwordStrengthStrongLabel">Strong</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="label-spacer"></div>
+			<p ui:field="help" class="help-block fieldMessage" />
+		</div>
+    </g:HTMLPanel>
+</ui:UiBinder>

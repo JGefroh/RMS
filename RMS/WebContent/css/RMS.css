@@ -1,0 +1,30 @@
+.inline-error {
+	color: red;
+}
+
+.fieldMessage {
+	height: 1em;
+}
+
+.nav-border {
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	border-color: #CCC;
+}
+
+.label-spacer {
+	padding-top: 1.2em;
+}
+
+html {
+    overflow-y: scroll;
+    min-width: 500px;
+}
+
+div[class~=has-error]>input {
+    background-color: #FCC; /**Default GWT Datebox error color*/
+}
+
+.required-symbol {
+	color: red;
+}
