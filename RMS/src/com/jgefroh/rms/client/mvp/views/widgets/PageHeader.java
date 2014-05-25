@@ -1,27 +1,23 @@
 package com.jgefroh.rms.client.mvp.views.widgets;
 
-import java.util.Iterator;
-
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.HeadingElement;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
 
 /**
  * @author Joseph Gefroh
  */
-public class BasicPanel extends Composite implements HasWidgets {
+public class PageHeader extends Composite {
     
     //////////////////////////////////////////////////
     // Boilerplate
     //////////////////////////////////////////////////
 
-    interface UIBinder extends UiBinder<Widget, BasicPanel> {
+    interface UIBinder extends UiBinder<Widget, PageHeader> {
         UIBinder INSTANCE = GWT.create(UIBinder.class);
     }
     
@@ -29,16 +25,16 @@ public class BasicPanel extends Composite implements HasWidgets {
     //////////////////////////////////////////////////
     // Fields - UI
     //////////////////////////////////////////////////
-     
-    @UiField FlowPanel content;
-    @UiField HeadingElement headerText;
+    
+    @UiField SpanElement header;
+    @UiField SpanElement description;
     
     
     //////////////////////////////////////////////////
     // Constructors
     //////////////////////////////////////////////////
     
-    public BasicPanel() {
+    public PageHeader() {
         initWidget(UIBinder.INSTANCE.createAndBindUi(this));
     }
 
@@ -48,31 +44,10 @@ public class BasicPanel extends Composite implements HasWidgets {
     //////////////////////////////////////////////////
     
     public void setHeader(final String text) {
-        headerText.setInnerText(text);
+        header.setInnerText(text);
     }
     
-    
-    //////////////////////////////////////////////////
-    // Methods - HasWidgets
-    //////////////////////////////////////////////////
-
-    @Override
-    public void add(final Widget widget) {
-        content.add(widget);
-    }
-
-    @Override
-    public void clear() {
-        content.clear();
-    }
-
-    @Override
-    public Iterator<Widget> iterator() {
-        return content.iterator();
-    }
-
-    @Override
-    public boolean remove(final Widget widget) {
-        return content.remove(widget);
+    public void setDescription(final String text) {
+        description.setInnerText(text);
     }
 }
