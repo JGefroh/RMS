@@ -6,8 +6,8 @@
 	</ui:style>
 
 	<g:HTMLPanel addStyleNames="panel panel-default">
-		<div ui:field="heading" class="panel-heading">
-			<h3 ui:field="headingText" class="panel-title"></h3>
+		<div ui:field="header" class="panel-heading">
+			<h3 ui:field="headerText" class="panel-title"></h3>
 		</div>
 		<g:FlowPanel ui:field="content" addStyleNames="panel-body">
 		</g:FlowPanel>
