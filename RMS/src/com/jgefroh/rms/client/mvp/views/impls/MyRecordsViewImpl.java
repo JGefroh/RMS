@@ -11,12 +11,12 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.jgefroh.rms.client.mvp.models.RecordVO;
-import com.jgefroh.rms.client.mvp.views.composites.BookRecordTable;
 import com.jgefroh.rms.client.mvp.views.interfaces.MyRecordsView;
-import com.jgefroh.rms.client.navigation.places.CreateBookRecordPlace;
+import com.jgefroh.rms.client.navigation.places.CreatePurchaseOrderRecordPlace;
 
 
 /**
@@ -36,7 +36,7 @@ public class MyRecordsViewImpl extends Composite implements MyRecordsView {
     // Fields - UI
     //////////////////////////////////////////////////
 
-    @UiField(provided = true) CellTable<RecordVO> myRecordsTable;
+    @UiField CellTable<RecordVO> myRecordsTable;
     
     
     //////////////////////////////////////////////////
@@ -44,7 +44,6 @@ public class MyRecordsViewImpl extends Composite implements MyRecordsView {
     //////////////////////////////////////////////////
     
     private Presenter presenter;
-    private BookRecordTable bookTable;
     
     
     //////////////////////////////////////////////////
@@ -63,7 +62,7 @@ public class MyRecordsViewImpl extends Composite implements MyRecordsView {
 
     @UiHandler("btnCreate")
     void onCreateClicked(final ClickEvent event) {
-        presenter.goTo(new CreateBookRecordPlace());
+        presenter.goTo(new CreatePurchaseOrderRecordPlace());
     }
     
     
@@ -82,12 +81,9 @@ public class MyRecordsViewImpl extends Composite implements MyRecordsView {
     //////////////////////////////////////////////////
     
     private void initBookRecordsTable() {
-        bookTable = new BookRecordTable();
-        myRecordsTable = bookTable.getTable();
     }
 
     @Override
     public void showRecords(final List<RecordVO> records) {
-        bookTable.showRecords(records);
     }
 }

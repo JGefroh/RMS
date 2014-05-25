@@ -5,28 +5,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
-import com.google.gwt.user.client.History;
-import com.google.web.bindery.event.shared.HandlerRegistration;
-import com.jgefroh.rms.client.mvp.views.interfaces.MyRecordsView;
-import com.jgefroh.rms.client.mvp.views.interfaces.MyRecordsView.Presenter;
+import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView;
+import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView.Presenter;
 import com.jgefroh.rms.client.util.ClientFactory;
 
 /**
- * The presenter for the MyRecords view.
+ * The presenter for the CreatePurchaseOrderRecord view.
  * @author Joseph Gefroh
  */
-public class MyRecordsPresenter implements Presenter {
+public class CreatePurchaseOrderRecordPresenter implements Presenter {
     
     
     //////////////////////////////////////////////////
     // Logging
     //////////////////////////////////////////////////
     
-    private static final Logger LOGGER = Logger.getLogger(MyRecordsPresenter.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CreatePurchaseOrderRecordPresenter.class.getName());
     private static final LogMessages LOGS = GWT.create(LogMessages.class);
     
     public interface LogMessages extends SafeHtmlTemplates {
@@ -37,17 +33,16 @@ public class MyRecordsPresenter implements Presenter {
     // Fields
     //////////////////////////////////////////////////
     
-    private MyRecordsView view;
+    private CreatePurchaseOrderRecordView view;
     private ClientFactory clientFactory;
 
-    private HandlerRegistration historyHandlerRegistration;
+    
     //////////////////////////////////////////////////
     // Constructors
     //////////////////////////////////////////////////
 
-    public MyRecordsPresenter(final ClientFactory clientFactory) {
+    public CreatePurchaseOrderRecordPresenter(final ClientFactory clientFactory) {
          this.clientFactory = clientFactory;
-         initHistoryHandlers();
     }
     
     
@@ -61,40 +56,33 @@ public class MyRecordsPresenter implements Presenter {
     }
 
     @Override
-    public void bind(MyRecordsView view) {
+    public void bind(CreatePurchaseOrderRecordView view) {
         this.view = view;
         this.view.setPresenter(this);
     }
 
     @Override
-    public void loadRecords() {
-    }
-    
-
-    //////////////////////////////////////////////////
-    // Methods - Helpers
-    //////////////////////////////////////////////////
-
-
-    
-    //////////////////////////////////////////////////
-    // Methods - Initialization
-    //////////////////////////////////////////////////
-    
-    private void initHistoryHandlers() {
-        historyHandlerRegistration = History.addValueChangeHandler(new ValueChangeHandler<String>() {
-            @Override
-            public void onValueChange(final ValueChangeEvent<String> event) {
-                LOGGER.log(Level.INFO, "Intercepting place change: " + event.getValue());
-                if (event.getValue().startsWith("editRecord")) {
-                    System.out.println("Prepping edit place.");
-                }
-            }
-        });
+    public void onSaveRequested() {
     }
 
     @Override
-    public void removeAllHandlers() {
-        historyHandlerRegistration.removeHandler();
+    public void onExamineRequested() {
+        LOGGER.log(Level.INFO, "EXAMINE REQUESTED");
     }
+
+    @Override
+    public void onSubmitRequested() {
+        LOGGER.log(Level.INFO, "SUBMIT REQUESTED");
+    }
+    
+
+    //////////////////////////////////////////////////
+    // Methods - Actions
+    //////////////////////////////////////////////////
+
+    //////////////////////////////////////////////////
+    // Methods - Validation
+    //////////////////////////////////////////////////
+
+
 }

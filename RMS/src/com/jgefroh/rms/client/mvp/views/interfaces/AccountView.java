@@ -4,7 +4,6 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.jgefroh.rms.client.mvp.models.UserVO;
 import com.jgefroh.rms.client.mvp.views.composites.AlertPanel.AlertType;
-import com.jgefroh.rms.client.mvp.views.util.BootstrapUtil.AppearanceType;
 import com.jgefroh.rms.client.util.PasswordStrengthCalculator.PasswordStrength;
 
 
