@@ -1,7 +1,6 @@
 package com.jgefroh.rms.client.mvp.presenters;
 
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,11 +11,8 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.user.client.History;
 import com.google.web.bindery.event.shared.HandlerRegistration;
-import com.jgefroh.rms.client.mvp.models.BookVO;
-import com.jgefroh.rms.client.mvp.models.RecordVO;
 import com.jgefroh.rms.client.mvp.views.interfaces.MyRecordsView;
 import com.jgefroh.rms.client.mvp.views.interfaces.MyRecordsView.Presenter;
-import com.jgefroh.rms.client.util.AppCache;
 import com.jgefroh.rms.client.util.ClientFactory;
 
 /**
@@ -72,8 +68,6 @@ public class MyRecordsPresenter implements Presenter {
 
     @Override
     public void loadRecords() {
-        List<RecordVO> records = AppCache.getRecordStore().getRecords(BookVO.Type.BOOK);
-        view.showRecords(records);
     }
     
 

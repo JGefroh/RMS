@@ -5,7 +5,6 @@ package com.jgefroh.rms.client.mvp.views.impls;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
@@ -15,13 +14,11 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import com.jgefroh.rms.client.mvp.views.constants.ValidationState;
 import com.jgefroh.rms.client.mvp.views.interfaces.LoginView;
 import com.jgefroh.rms.client.mvp.views.util.BootstrapUtil;
-import com.jgefroh.rms.client.mvp.views.util.BootstrapUtil.AppearanceType;
+import com.jgefroh.rms.client.mvp.views.widgets.DismissableAlert;
 import com.jgefroh.rms.client.mvp.views.widgets.PasswordField;
 import com.jgefroh.rms.client.mvp.views.widgets.TextField;
-import com.jgefroh.rms.client.mvp.views.widgets.interfaces.HasValidation;
 import com.jgefroh.rms.client.resources.MessageConstants;
 
 
@@ -46,6 +43,7 @@ public class LoginViewImpl extends Composite implements LoginView {
     @UiField PasswordField password;
     @UiField Button btnLogin;
     @UiField DivElement formMessageContainer;
+    @UiField DismissableAlert alert;
     
     //////////////////////////////////////////////////
     // Fields
@@ -126,8 +124,10 @@ public class LoginViewImpl extends Composite implements LoginView {
     //////////////////////////////////////////////////
 
     @Override
-    public void showFormMessage(final String message, final AppearanceType type) {
-        BootstrapUtil.setAlertDanger(formMessageContainer, message);
+    public void showFormMessage(final String message) {
+        alert.setLead("Error!");
+        alert.setText(message);
+        alert.show();
     }
     
     @Override
@@ -135,8 +135,5 @@ public class LoginViewImpl extends Composite implements LoginView {
         username.setEnabled(!isLoading);
         password.setEnabled(!isLoading);
         btnLogin.setEnabled(!isLoading);
-        if (isLoading) {
-            formMessageContainer.removeAllChildren();
-        }
     }
 }

@@ -8,7 +8,6 @@ import com.jgefroh.rms.client.events.LoginSucceeded;
 import com.jgefroh.rms.client.mvp.models.LoginDTO;
 import com.jgefroh.rms.client.mvp.views.interfaces.LoginView;
 import com.jgefroh.rms.client.mvp.views.interfaces.LoginView.Presenter;
-import com.jgefroh.rms.client.mvp.views.util.BootstrapUtil.AppearanceType;
 import com.jgefroh.rms.client.services.LoginService;
 import com.jgefroh.rms.client.services.LoginServiceAsync;
 import com.jgefroh.rms.client.util.AppCache;
@@ -64,6 +63,9 @@ public class LoginPresenter implements Presenter {
             LoginDTO credentials = convertCredentialsToDTO(username, password);
             login(credentials);
         }
+        else {
+            view.setLoading(false);
+        }
     }
 
     private boolean isLoginValid(final String username, final String password) {
@@ -100,7 +102,7 @@ public class LoginPresenter implements Presenter {
                     AppCache.getAppBus().fireEvent(new LoginSucceeded());
                 }
                 else {
-                    view.showFormMessage("Unable to login. The credentials you provided were invalid.", AppearanceType.DANGER);
+                    view.showFormMessage("Unable to login. The credentials you provided were invalid.");
                 }
             }
         });

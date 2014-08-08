@@ -5,14 +5,14 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.jgefroh.rms.client.mvp.views.impls.AccountViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.Code404ViewImpl;
-import com.jgefroh.rms.client.mvp.views.impls.CreateBookRecordViewImpl;
+import com.jgefroh.rms.client.mvp.views.impls.CreatePurchaseOrderRecordViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.LoginViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.MyRecordsViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.NavBarViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.SplashViewImpl;
 import com.jgefroh.rms.client.mvp.views.interfaces.AccountView;
 import com.jgefroh.rms.client.mvp.views.interfaces.Code404View;
-import com.jgefroh.rms.client.mvp.views.interfaces.CreateBookRecordView;
+import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView;
 import com.jgefroh.rms.client.mvp.views.interfaces.LoginView;
 import com.jgefroh.rms.client.mvp.views.interfaces.MyRecordsView;
 import com.jgefroh.rms.client.mvp.views.interfaces.NavBarView;
@@ -34,9 +34,8 @@ public class ClientFactoryImpl implements ClientFactory {
     private static AccountView accountView;
     private static Code404View code404View;
     private static MyRecordsView myRecordsView;
-    private static CreateBookRecordView createBookRecordView;
+    private static CreatePurchaseOrderRecordView createPurchaseOrderRecordView;
     private static PlaceController placeController;
-    
     
     //////////////////////////////////////////////////
     // Methods - Getters
@@ -107,11 +106,11 @@ public class ClientFactoryImpl implements ClientFactory {
     }
     
     @Override
-    public CreateBookRecordView getCreateBookRecordView() {
-        if (createBookRecordView == null) {
-            createBookRecordView = new CreateBookRecordViewImpl();
+    public CreatePurchaseOrderRecordView getCreatePurchaseOrderRecordView() {
+        if (createPurchaseOrderRecordView == null) {
+            createPurchaseOrderRecordView = new CreatePurchaseOrderRecordViewImpl();
         }
-        return createBookRecordView;
+        return createPurchaseOrderRecordView;
     }
     
 }

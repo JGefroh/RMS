@@ -14,12 +14,11 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.jgefroh.rms.client.mvp.views.composites.AlertPanel;
 import com.jgefroh.rms.client.mvp.views.composites.AlertPanel.AlertType;
-import com.jgefroh.rms.client.mvp.views.constants.ValidationState;
 import com.jgefroh.rms.client.mvp.views.interfaces.AccountView;
+import com.jgefroh.rms.client.mvp.views.util.WidgetValidationUtil;
 import com.jgefroh.rms.client.mvp.views.widgets.PasswordField;
 import com.jgefroh.rms.client.mvp.views.widgets.StrengthMeter;
 import com.jgefroh.rms.client.mvp.views.widgets.TextField;
-import com.jgefroh.rms.client.mvp.views.widgets.interfaces.HasValidation;
 import com.jgefroh.rms.client.resources.MessageConstants;
 import com.jgefroh.rms.client.util.PasswordStrengthCalculator.PasswordStrength;
 
@@ -210,31 +209,19 @@ public class AccountViewImpl extends Composite implements AccountView {
     //////////////////////////////////////////////////
     // Methods - Validation
     //////////////////////////////////////////////////
-    
-    private void setValidationState(final ValidationState state, final HasValidation validatable) {
-        if (ValidationState.ERROR.equals(state)) {
-            validatable.markInvalid();
-        }
-        else {
-            validatable.markNormal();
-        }
-    }
-    
+
     @Override
     public void setEmailMessage(final String message) {
-        email.setMessage(message);
-        setValidationState(message == null ? ValidationState.CLEAR : ValidationState.ERROR, email);
+        WidgetValidationUtil.setFieldErrorMessage(email, message);
     }
 
     @Override
     public void setFullnameMessage(final String message) {
-        fullname.setMessage(message);
-        setValidationState(message == null ? ValidationState.CLEAR : ValidationState.ERROR, fullname);
+        WidgetValidationUtil.setFieldErrorMessage(fullname, message);
     }
 
     @Override
     public void setNicknameMessage(final String message) {
-        nickname.setMessage(message);
-        setValidationState(message == null ? ValidationState.CLEAR : ValidationState.ERROR, nickname);
+        WidgetValidationUtil.setFieldErrorMessage(nickname, message);
     }
 }

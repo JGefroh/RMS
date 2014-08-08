@@ -1,6 +1,5 @@
 package com.jgefroh.rms.client.mvp.models;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 

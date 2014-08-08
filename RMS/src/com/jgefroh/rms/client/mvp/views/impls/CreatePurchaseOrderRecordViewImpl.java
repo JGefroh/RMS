@@ -24,34 +24,27 @@ import com.jgefroh.rms.client.events.ActionRequested;
 import com.jgefroh.rms.client.mvp.views.composites.RecordEditActionPanel;
 import com.jgefroh.rms.client.mvp.views.composites.RecordEditActionPanel.Action;
 import com.jgefroh.rms.client.mvp.views.constants.ValidationState;
-import com.jgefroh.rms.client.mvp.views.interfaces.CreateBookRecordView;
+import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView;
 import com.jgefroh.rms.client.mvp.views.util.BootstrapUtil;
 
 
 /**
  * @author Joseph Gefroh
  */
-public class CreateBookRecordViewImpl extends Composite implements CreateBookRecordView {
+public class CreatePurchaseOrderRecordViewImpl extends Composite implements CreatePurchaseOrderRecordView {
 
 
     //////////////////////////////////////////////////
     // Interfaces
     //////////////////////////////////////////////////
     
-    interface CreateBookRecordViewImplUiBinder extends UiBinder<Widget, CreateBookRecordViewImpl> {}
-    private static CreateBookRecordViewImplUiBinder uiBinder = GWT.create(CreateBookRecordViewImplUiBinder.class);
+    interface CreatePurchaseOrderRecordViewImplUiBinder extends UiBinder<Widget, CreatePurchaseOrderRecordViewImpl> {}
+    private static CreatePurchaseOrderRecordViewImplUiBinder uiBinder = GWT.create(CreatePurchaseOrderRecordViewImplUiBinder.class);
     
     //////////////////////////////////////////////////
     // Fields - UI
     //////////////////////////////////////////////////
-     
-    @UiField TextBox authorField;
-    
-    @UiField DateBox publishedDateField;
-    @UiField DivElement publishedDateFormGroup;
-    @UiField SpanElement publishedDateMessage;
-    @UiField SpanElement publishedDateGlyph;
-    
+
     @UiField RecordEditActionPanel actionPanelTop;
     @UiField RecordEditActionPanel actionPanelBottom;
     
@@ -67,9 +60,8 @@ public class CreateBookRecordViewImpl extends Composite implements CreateBookRec
     // Constructors
     //////////////////////////////////////////////////
     
-    public CreateBookRecordViewImpl() {
+    public CreatePurchaseOrderRecordViewImpl() {
         initWidget(uiBinder.createAndBindUi(this));
-        initDateBoxes();
     }
 
 
@@ -89,11 +81,7 @@ public class CreateBookRecordViewImpl extends Composite implements CreateBookRec
             presenter.onSubmitRequested();
         }
     }
-    
-    @UiHandler("publishedDateField")
-    void onPublishedDateValueChange(final ValueChangeEvent<Date> event) {
-        presenter.validatePublishedDate();
-    }
+
     
     //////////////////////////////////////////////////
     // Methods - Interface Overrides
@@ -109,43 +97,14 @@ public class CreateBookRecordViewImpl extends Composite implements CreateBookRec
     // Methods - Initialization
     //////////////////////////////////////////////////
     
-    private void initDateBoxes() {
-        publishedDateField.getTextBox().addBlurHandler(new BlurHandler() {
-            @Override
-            public void onBlur(BlurEvent event) {
-                presenter.validatePublishedDate();
-            }
-        });
-        
-        publishedDateField.setFormat(new DefaultFormat(PUBLISHED_YEAR_FORMAT));
-    }
-    
     
     //////////////////////////////////////////////////
     // Methods - Getters
     //////////////////////////////////////////////////
-    
-    @Override
-    public String getPublishedDate() {
-        String textBoxValue = publishedDateField.getTextBox().getValue();
-        return textBoxValue == null ? null : textBoxValue;
-    }
-    
-    @Override
-    public String getAuthor() {
-        return authorField.getValue().isEmpty() ? null : authorField.getValue();
-    }
-    
     
     
     
     //////////////////////////////////////////////////
     // Methods - Setters
     //////////////////////////////////////////////////
-
-    @Override
-    public void setPublishedDateValidationState(final ValidationState state, final String message) {
-        publishedDateMessage.setInnerText(message);
-        BootstrapUtil.setFieldValidationState(state, publishedDateFormGroup, publishedDateGlyph);
-    }
 }

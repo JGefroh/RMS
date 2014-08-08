@@ -13,17 +13,8 @@
 	<g:HTMLPanel>
 		<div class="col-md-9">
             <composites:AlertPanel ui:field="alertPanel" />
-			<div class="page-header">
-				<h2>
-					RMS - My Account
-					<br />
-					<span class="small">
-						You can view and change your account settings
-						here.
-					</span>
-				</h2>
-			</div>
-			
+            <widgets:PageHeader header="RMS - My Account" description="You can view and change your account settings here."/>
+
 			<div class="form-group has-feedback col-md-3">
 				<label class="control-label">Your Username</label>
 				<p class="form-control-static">guest</p>
@@ -40,14 +31,14 @@
 		      <span class="required-symbol">*</span> indicates a required field - they can't be blank!
 			</p>
 
-            <widgets:BasicPanel heading="Profile Information">
+            <widgets:BasicPanel header="Profile Information">
                     <widgets:TextField ui:field="fullname" label="Full Name" help="This name will be visible to other users." required="true" />
                     <widgets:TextField ui:field="nickname" label="What should we call you?" help="We'll use this name in email notifications." required="true"/>
             </widgets:BasicPanel>
 
 			<br />
 
-			<widgets:BasicPanel heading="Account Settings">
+			<widgets:BasicPanel header="Account Settings">
                     <widgets:TextField      ui:field="email"            label="Email Address"     help="We'll send email notifications to this address." />
                     <widgets:PasswordField  ui:field="newPassword"      label="New Password"      help="New passwords should be at least 8 characters long." />
                     <widgets:StrengthMeter  ui:field="strengthMeter"    label="Password Strength" help="Improve your password: use letters, symbols, and digits." />
@@ -63,6 +54,4 @@
 			</g:Button>
 		</div>
 	</g:HTMLPanel>
-
-
 </ui:UiBinder>

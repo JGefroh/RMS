@@ -2,7 +2,6 @@ package com.jgefroh.rms.client.mvp.views.interfaces;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.IsWidget;
-import com.jgefroh.rms.client.mvp.views.util.BootstrapUtil.AppearanceType;
 
 
 /**
@@ -19,7 +18,7 @@ public interface LoginView extends IsWidget {
 
     String getPassword();
     String getUsername();
-    void showFormMessage(String message, AppearanceType type);
+    void showFormMessage(String message);
     void setLoading(boolean isLoading);
     void setPresenter(Presenter presenter);
 }
