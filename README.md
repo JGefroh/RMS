@@ -15,4 +15,6 @@ The following features are demonstrated in RMS, among others:
 * AJAX RPC Services
 * ...and more!
 
+A [live version](http://rms.jgefroh.com/index.html) can be found on my website.
+
 RMS Copyright © 2014 Joseph Gefroh
