@@ -7,22 +7,21 @@ import java.util.logging.Logger;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
-import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView;
-import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView.Presenter;
+import com.jgefroh.rms.client.mvp.views.interfaces.PurchaseOrderRecordCreateView;
+import com.jgefroh.rms.client.mvp.views.interfaces.PurchaseOrderRecordCreateView.Presenter;
 import com.jgefroh.rms.client.util.ClientFactory;
 
 /**
- * The presenter for the CreatePurchaseOrderRecord view.
  * @author Joseph Gefroh
  */
-public class CreatePurchaseOrderRecordPresenter implements Presenter {
+public class PurchaseOrderRecordCreatePresenter implements Presenter {
     
     
     //////////////////////////////////////////////////
     // Logging
     //////////////////////////////////////////////////
     
-    private static final Logger LOGGER = Logger.getLogger(CreatePurchaseOrderRecordPresenter.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PurchaseOrderRecordCreatePresenter.class.getName());
     private static final LogMessages LOGS = GWT.create(LogMessages.class);
     
     public interface LogMessages extends SafeHtmlTemplates {
@@ -33,7 +32,7 @@ public class CreatePurchaseOrderRecordPresenter implements Presenter {
     // Fields
     //////////////////////////////////////////////////
     
-    private CreatePurchaseOrderRecordView view;
+    private PurchaseOrderRecordCreateView view;
     private ClientFactory clientFactory;
 
     
@@ -41,7 +40,7 @@ public class CreatePurchaseOrderRecordPresenter implements Presenter {
     // Constructors
     //////////////////////////////////////////////////
 
-    public CreatePurchaseOrderRecordPresenter(final ClientFactory clientFactory) {
+    public PurchaseOrderRecordCreatePresenter(final ClientFactory clientFactory) {
          this.clientFactory = clientFactory;
     }
     
@@ -56,7 +55,7 @@ public class CreatePurchaseOrderRecordPresenter implements Presenter {
     }
 
     @Override
-    public void bind(CreatePurchaseOrderRecordView view) {
+    public void bind(PurchaseOrderRecordCreateView view) {
         this.view = view;
         this.view.setPresenter(this);
     }

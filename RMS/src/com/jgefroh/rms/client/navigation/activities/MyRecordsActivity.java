@@ -38,9 +38,7 @@ public class MyRecordsActivity extends AbstractActivity {
         MyRecordsView view = clientFactory.getMyRecordsView();
         presenter = new MyRecordsPresenter(clientFactory);
         presenter.bind(view);
-        
         presenter.loadRecords();
-        
         panel.setWidget(view);
     }
 

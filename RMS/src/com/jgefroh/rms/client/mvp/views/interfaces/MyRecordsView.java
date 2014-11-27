@@ -21,7 +21,6 @@ public interface MyRecordsView extends IsWidget {
         void removeAllHandlers();
         void loadRecords();
     }
-
     
     void setPresenter(Presenter presenter);
     void showRecords(List<RecordVO> records);

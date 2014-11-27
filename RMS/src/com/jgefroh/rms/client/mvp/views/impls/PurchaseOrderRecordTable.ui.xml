@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder    xmlns:ui="urn:ui:com.google.gwt.uibinder"
+                xmlns:g="urn:import:com.google.gwt.user.client.ui"  
+                xmlns:c="urn:import:com.google.gwt.user.cellview.client"
+                xmlns:widgets="urn:import:com.jgefroh.rms.client.mvp.views.widgets" >
+   <ui:with field="msg" type="com.jgefroh.rms.client.resources.MessageConstants"/>
+   <ui:with field="res" type="com.jgefroh.rms.client.resources.Resources" />
+                
+    <ui:style>
+       .create-btn-margin {
+            margin-top: 1.7em;
+       }
+    </ui:style>
+
+    <g:HTMLPanel styleName="row">
+    <div class="col-xs-12">
+        <c:CellTable ui:field="table" addStyleNames="table table-striped table-hover" />
+    </div>
+    </g:HTMLPanel>
+    
+    
+</ui:UiBinder>

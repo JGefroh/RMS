@@ -1,28 +1,35 @@
 package com.jgefroh.rms.client.mvp.views.composites;
 
 import java.util.List;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import com.google.gwt.cell.client.AbstractCell;
+import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.cell.client.Cell.Context;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates.Template;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
-import com.jgefroh.rms.client.mvp.models.RecordVO;
-import com.jgefroh.rms.client.mvp.models.RecordVO.CommonField;
+import com.jgefroh.rms.client.mvp.models.HasID;
 import com.jgefroh.rms.client.resources.CSSCellTableResource;
 
 /**
  * @author Joseph Gefroh
  */
-public abstract class AbstractRecordTable extends Composite {
+public abstract class AbstractRecordTable<T extends HasID> extends Composite {
 
     //////////////////////////////////////////////////
     // Templates
@@ -40,20 +47,23 @@ public abstract class AbstractRecordTable extends Composite {
                     + "<li><a href=\"index.html#deleteRecord:{0}\"><span class=\"glyphicon glyphicon-send\"></span> Submit</a></li>"
                 + "</ul>"
             + "</div>")
-        SafeHtml dropdownActions(String recordNumber);
+        SafeHtml dropdownActions(Integer recordNumber);
     }
+    
+    private static final Logger LOGGER = Logger.getLogger(AbstractRecordTable.class.getName());
     
     //////////////////////////////////////////////////
     // Fields - UI
     //////////////////////////////////////////////////
 
-    private CellTable<RecordVO> table;
-    private ListDataProvider<RecordVO> model;
+    private CellTable<T> table;
+    private ListDataProvider<T> model;
 
     
     //////////////////////////////////////////////////
     // Fields
     //////////////////////////////////////////////////
+    
     private static final int NUM_VISIBLE_ITEMS = 10;
     private static final String HEADER_ID = "ID";
     private static final String HEADER_ACTIONS = "Actions";    
@@ -88,7 +98,7 @@ public abstract class AbstractRecordTable extends Composite {
     // Methods - Actions
     //////////////////////////////////////////////////
 
-    public void showRecords(final List<RecordVO> records) {
+    public void showRecords(final List<T> records) {
         model.getList().clear();
         if (records.isEmpty()) {
             table.setLoadingIndicator(new Label("No records found."));
@@ -107,31 +117,31 @@ public abstract class AbstractRecordTable extends Composite {
     
     private void initTable() {
         tableResources = GWT.create(CSSCellTableResource.class);
-        table = new CellTable<RecordVO>(NUM_VISIBLE_ITEMS, tableResources);
+        table = new CellTable<T>(NUM_VISIBLE_ITEMS, tableResources);
     }
     
     private void initModel() {
-        model = new ListDataProvider<RecordVO>();
+        model = new ListDataProvider<T>();
         model.addDataDisplay(table);
     }
     
     private void initCommonColumns() {
-        TextColumn<RecordVO> actionCol = new TextColumn<RecordVO>() {
+        TextColumn<T> actionCol = new TextColumn<T>() {
             @Override
-            public void render(Context context, RecordVO object, SafeHtmlBuilder sb) {
-                sb.append(CELLS.dropdownActions(object.getValuesByID().get(CommonField.ID)));
+            public void render(final Context context, final T record, final SafeHtmlBuilder sb) {
+                sb.appendHtmlConstant((new RecordDropdownMenu(record.getID()).getElement().getString()));
             }
             
             @Override
-            public String getValue(RecordVO object) {
+            public String getValue(final T record) {
                 return null;
             }
         };
         
-        TextColumn<RecordVO> idCol = new TextColumn<RecordVO>() {
+        TextColumn<T> idCol = new TextColumn<T>() {
             @Override
-            public String getValue(RecordVO object) {
-                return object.get(CommonField.ID);
+            public String getValue(final T record) {
+                return String.valueOf(record.getID());
             }
         };
         
@@ -139,7 +149,7 @@ public abstract class AbstractRecordTable extends Composite {
         table.addColumn(idCol, HEADER_ID);
     }
 
-    public CellTable<RecordVO> getTable() {
+    public CellTable<T> getTable() {
         return table;
     }
 }

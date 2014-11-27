@@ -16,7 +16,7 @@
             <p class="help-block text-center">Don't have an account? Sign in as a guest with username and password as "guest".</p>
                
             <div ui:field="formMessageContainer" class="row">
-                <widgets:DismissableAlert ui:field="alert" text="This is a test error message." lead="Error!" />
+                <widgets:DismissableAlert ui:field="alert" lead="Error!" />
             </div>
                
 			<div class="col-md-4 col-md-offset-4">

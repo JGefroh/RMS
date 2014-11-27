@@ -1,6 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder    xmlns:ui="urn:ui:com.google.gwt.uibinder"
-                xmlns:g="urn:import:com.google.gwt.user.client.ui">
+                xmlns:g="urn:import:com.google.gwt.user.client.ui"
+                xmlns:widgets="urn:import:com.jgefroh.rms.client.mvp.views.widgets" >
    <ui:with field="msg" type="com.jgefroh.rms.client.resources.MessageConstants"/>
    <ui:with field="res" type="com.jgefroh.rms.client.resources.Resources" />
                 
@@ -17,7 +18,7 @@
 		    		  </span>
 	    		  </h2>
 		      </div>
-    		  <p>You've automatically been logged into this system as an anonymous guest user.</p>
+    		  <p>You've been logged into this system as an anonymous guest user.</p>
               <p>Any changes you make will not be saved after you leave this page - feel free to mess around!</p>
               <br />
               <p>Click any of the menu options to get started.</p>

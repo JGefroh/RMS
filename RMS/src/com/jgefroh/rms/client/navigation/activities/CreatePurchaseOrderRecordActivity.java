@@ -3,9 +3,9 @@ package com.jgefroh.rms.client.navigation.activities;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.jgefroh.rms.client.mvp.presenters.CreatePurchaseOrderRecordPresenter;
-import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView;
-import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView.Presenter;
+import com.jgefroh.rms.client.mvp.presenters.PurchaseOrderRecordCreatePresenter;
+import com.jgefroh.rms.client.mvp.views.interfaces.PurchaseOrderRecordCreateView;
+import com.jgefroh.rms.client.mvp.views.interfaces.PurchaseOrderRecordCreateView.Presenter;
 import com.jgefroh.rms.client.navigation.places.CreatePurchaseOrderRecordPlace;
 import com.jgefroh.rms.client.util.ClientFactory;
 
@@ -35,8 +35,8 @@ public class CreatePurchaseOrderRecordActivity extends AbstractActivity {
 
     @Override
     public void start(final AcceptsOneWidget panel, final EventBus eventBus) {
-        CreatePurchaseOrderRecordView view = clientFactory.getCreatePurchaseOrderRecordView();
-        presenter = new CreatePurchaseOrderRecordPresenter(clientFactory);
+        PurchaseOrderRecordCreateView view = clientFactory.getCreatePurchaseOrderRecordView();
+        presenter = new PurchaseOrderRecordCreatePresenter(clientFactory);
         presenter.bind(view);
         
         panel.setWidget(view);

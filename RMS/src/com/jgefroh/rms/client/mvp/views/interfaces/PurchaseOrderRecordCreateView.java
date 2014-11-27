@@ -7,11 +7,11 @@ import com.google.gwt.user.client.ui.IsWidget;
 /**
  * @author Joseph Gefroh
  */
-public interface CreatePurchaseOrderRecordView extends IsWidget {
+public interface PurchaseOrderRecordCreateView extends IsWidget {
 
     public interface Presenter {
         void goTo(Place place);
-        void bind(CreatePurchaseOrderRecordView view);
+        void bind(PurchaseOrderRecordCreateView view);
         void onSaveRequested();
         void onExamineRequested();
         void onSubmitRequested();

@@ -13,6 +13,7 @@ import com.google.gwt.user.client.History;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.jgefroh.rms.client.mvp.views.interfaces.MyRecordsView;
 import com.jgefroh.rms.client.mvp.views.interfaces.MyRecordsView.Presenter;
+import com.jgefroh.rms.client.util.AppCache;
 import com.jgefroh.rms.client.util.ClientFactory;
 
 /**
@@ -39,8 +40,9 @@ public class MyRecordsPresenter implements Presenter {
     
     private MyRecordsView view;
     private ClientFactory clientFactory;
-
     private HandlerRegistration historyHandlerRegistration;
+    
+    
     //////////////////////////////////////////////////
     // Constructors
     //////////////////////////////////////////////////
@@ -68,6 +70,7 @@ public class MyRecordsPresenter implements Presenter {
 
     @Override
     public void loadRecords() {
+        view.showRecords(null);
     }
     
 

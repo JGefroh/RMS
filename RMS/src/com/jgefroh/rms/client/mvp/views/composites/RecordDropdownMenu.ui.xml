@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" >
+    
+    <ui:style>
+    </ui:style>
+
+    <g:HTMLPanel styleName="btn-group dropdown">
+        <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu">
+            <li><g:Button ui:field="btnEdit" styleName="btn btn-block btn-link"><span class="glyphicon glyphicon-pencil">&nbsp;</span>Edit</g:Button></li>
+            <li><g:Button ui:field="btnView" styleName="btn btn-block btn-link"><span class="glyphicon glyphicon-eye-open">&nbsp;</span>View</g:Button></li>
+            <li><g:Button ui:field="btnDelete" styleName="btn btn-block btn-link"><span class="glyphicon glyphicon-remove-circle">&nbsp;</span>Delete</g:Button></li>
+            <li class="divider"></li>
+            <li><g:Button ui:field="btnSubmit" styleName="btn btn-block btn-link"><span class="glyphicon glyphicon-send">&nbsp;</span>Submit</g:Button></li>
+        </ul>
+    </g:HTMLPanel>
+</ui:UiBinder>

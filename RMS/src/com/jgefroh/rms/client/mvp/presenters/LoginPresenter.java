@@ -8,6 +8,7 @@ import com.jgefroh.rms.client.events.LoginSucceeded;
 import com.jgefroh.rms.client.mvp.models.LoginDTO;
 import com.jgefroh.rms.client.mvp.views.interfaces.LoginView;
 import com.jgefroh.rms.client.mvp.views.interfaces.LoginView.Presenter;
+import com.jgefroh.rms.client.navigation.places.SplashPlace;
 import com.jgefroh.rms.client.services.LoginService;
 import com.jgefroh.rms.client.services.LoginServiceAsync;
 import com.jgefroh.rms.client.util.AppCache;
@@ -49,6 +50,7 @@ public class LoginPresenter implements Presenter {
     public void bind(final LoginView view) {
         this.view = view;
         this.view.setPresenter(this);
+        view.showFormMessage(null);
     }
 
     
@@ -58,6 +60,7 @@ public class LoginPresenter implements Presenter {
 
     @Override
     public void requestLogin(final String username, final String password) {
+        view.showFormMessage(null);
         view.setLoading(true);
         if (isLoginValid(username, password)) {
             LoginDTO credentials = convertCredentialsToDTO(username, password);
@@ -65,6 +68,7 @@ public class LoginPresenter implements Presenter {
         }
         else {
             view.setLoading(false);
+            view.showFormMessage("Unable to login. Please provide both a username and a password.");
         }
     }
 
@@ -100,6 +104,7 @@ public class LoginPresenter implements Presenter {
                 view.setLoading(false);
                 if (result == true) {
                     AppCache.getAppBus().fireEvent(new LoginSucceeded());
+                    clientFactory.getPlaceController().goTo(new SplashPlace());
                 }
                 else {
                     view.showFormMessage("Unable to login. The credentials you provided were invalid.");

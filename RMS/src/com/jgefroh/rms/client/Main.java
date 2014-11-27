@@ -54,7 +54,6 @@ public class Main implements EntryPoint {
     //////////////////////////////////////////////////
     
     private void prepareApplication() { 
-        RootPanel.get("rms-nav").add(createNavPanel());
         PlaceController placeController = clientFactory.getPlaceController();
         ActivityMapper mainActivityMapper = new RMSActivityMapper(clientFactory);
         ActivityManager mainActivityManager = new ActivityManager(mainActivityMapper, clientFactory.getHistoryBus());
@@ -66,15 +65,29 @@ public class Main implements EntryPoint {
         PlaceHistoryMapper historyMapper = GWT.create(RMSPlaceHistoryMapper.class);
         PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
         historyHandler.register(placeController, clientFactory.getHistoryBus(), new Code404Place());
-        placeController.goTo(new SplashPlace());
-        createGuestUser();
+        placeController.goTo(new LoginPlace());
         initNavigationWatcher();
+        initLoginSuccessHandler();
+    }
+    
+    private void initNavigationWatcher () {
+        navWatch = new NavigationWatcher(clientFactory);
     }
     
     private SimplePanel createNavPanel() {
         SimplePanel navPanel = new SimplePanel();
         navPanel.add(clientFactory.getNavBarView());
         return navPanel;
+    }
+    
+    private void initLoginSuccessHandler() {
+        AppCache.getAppBus().addHandler(LoginSucceeded.TYPE, new LoginSucceededHandler() {
+            @Override
+            public void handle(LoginSucceeded event) {
+                createGuestUser();
+                RootPanel.get("rms-nav").add(createNavPanel());
+            }
+        });
     }
     
     private void createGuestUser() {
@@ -85,9 +98,4 @@ public class Main implements EntryPoint {
         guestUser.setEmail("guest@example.com");
         AppCache.setCurrentUser(guestUser);
     }
-    
-    private void initNavigationWatcher () {
-        navWatch = new NavigationWatcher(clientFactory);
-    }
-    
 }

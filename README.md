@@ -1,7 +1,7 @@
-RMS
+﻿RMS
 ===
 
-Record Management System is a basic web application that demonstrates various approaches to solving common problems that arise during development of a Google Web Toolkit (GWT) application.
+Record Management System is an incomplete, prototype web application that demonstrates various approaches to solving common problems that arise during development of a Google Web Toolkit (GWT) application.
 
 It demonstrates architecture and design concepts without the distracting and arbitrary business rules and edge cases that are present in typical production applications, and is intended to be a point of discussion for further exploration and improvement instead of a hard design guideline.
 

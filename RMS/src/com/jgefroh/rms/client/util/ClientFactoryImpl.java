@@ -5,14 +5,14 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.jgefroh.rms.client.mvp.views.impls.AccountViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.Code404ViewImpl;
-import com.jgefroh.rms.client.mvp.views.impls.CreatePurchaseOrderRecordViewImpl;
+import com.jgefroh.rms.client.mvp.views.impls.PurchaseOrderRecordCreateViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.LoginViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.MyRecordsViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.NavBarViewImpl;
 import com.jgefroh.rms.client.mvp.views.impls.SplashViewImpl;
 import com.jgefroh.rms.client.mvp.views.interfaces.AccountView;
 import com.jgefroh.rms.client.mvp.views.interfaces.Code404View;
-import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView;
+import com.jgefroh.rms.client.mvp.views.interfaces.PurchaseOrderRecordCreateView;
 import com.jgefroh.rms.client.mvp.views.interfaces.LoginView;
 import com.jgefroh.rms.client.mvp.views.interfaces.MyRecordsView;
 import com.jgefroh.rms.client.mvp.views.interfaces.NavBarView;
@@ -34,7 +34,7 @@ public class ClientFactoryImpl implements ClientFactory {
     private static AccountView accountView;
     private static Code404View code404View;
     private static MyRecordsView myRecordsView;
-    private static CreatePurchaseOrderRecordView createPurchaseOrderRecordView;
+    private static PurchaseOrderRecordCreateView purchaseOrderRecordCreateView;
     private static PlaceController placeController;
     
     //////////////////////////////////////////////////
@@ -106,11 +106,11 @@ public class ClientFactoryImpl implements ClientFactory {
     }
     
     @Override
-    public CreatePurchaseOrderRecordView getCreatePurchaseOrderRecordView() {
-        if (createPurchaseOrderRecordView == null) {
-            createPurchaseOrderRecordView = new CreatePurchaseOrderRecordViewImpl();
+    public PurchaseOrderRecordCreateView getCreatePurchaseOrderRecordView() {
+        if (purchaseOrderRecordCreateView == null) {
+            purchaseOrderRecordCreateView = new PurchaseOrderRecordCreateViewImpl();
         }
-        return createPurchaseOrderRecordView;
+        return purchaseOrderRecordCreateView;
     }
     
 }

@@ -24,21 +24,21 @@ import com.jgefroh.rms.client.events.ActionRequested;
 import com.jgefroh.rms.client.mvp.views.composites.RecordEditActionPanel;
 import com.jgefroh.rms.client.mvp.views.composites.RecordEditActionPanel.Action;
 import com.jgefroh.rms.client.mvp.views.constants.ValidationState;
-import com.jgefroh.rms.client.mvp.views.interfaces.CreatePurchaseOrderRecordView;
+import com.jgefroh.rms.client.mvp.views.interfaces.PurchaseOrderRecordCreateView;
 import com.jgefroh.rms.client.mvp.views.util.BootstrapUtil;
 
 
 /**
  * @author Joseph Gefroh
  */
-public class CreatePurchaseOrderRecordViewImpl extends Composite implements CreatePurchaseOrderRecordView {
+public class PurchaseOrderRecordCreateViewImpl extends Composite implements PurchaseOrderRecordCreateView {
 
 
     //////////////////////////////////////////////////
     // Interfaces
     //////////////////////////////////////////////////
     
-    interface CreatePurchaseOrderRecordViewImplUiBinder extends UiBinder<Widget, CreatePurchaseOrderRecordViewImpl> {}
+    interface CreatePurchaseOrderRecordViewImplUiBinder extends UiBinder<Widget, PurchaseOrderRecordCreateViewImpl> {}
     private static CreatePurchaseOrderRecordViewImplUiBinder uiBinder = GWT.create(CreatePurchaseOrderRecordViewImplUiBinder.class);
     
     //////////////////////////////////////////////////
@@ -53,14 +53,13 @@ public class CreatePurchaseOrderRecordViewImpl extends Composite implements Crea
     //////////////////////////////////////////////////
     
     private Presenter presenter;
-    private static final DateTimeFormat PUBLISHED_YEAR_FORMAT = DateTimeFormat.getFormat("yyyy");
     
     
     //////////////////////////////////////////////////
     // Constructors
     //////////////////////////////////////////////////
     
-    public CreatePurchaseOrderRecordViewImpl() {
+    public PurchaseOrderRecordCreateViewImpl() {
         initWidget(uiBinder.createAndBindUi(this));
     }
 
@@ -95,16 +94,5 @@ public class CreatePurchaseOrderRecordViewImpl extends Composite implements Crea
 
     //////////////////////////////////////////////////
     // Methods - Initialization
-    //////////////////////////////////////////////////
-    
-    
-    //////////////////////////////////////////////////
-    // Methods - Getters
-    //////////////////////////////////////////////////
-    
-    
-    
-    //////////////////////////////////////////////////
-    // Methods - Setters
     //////////////////////////////////////////////////
 }

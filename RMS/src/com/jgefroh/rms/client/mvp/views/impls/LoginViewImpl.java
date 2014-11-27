@@ -15,7 +15,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.jgefroh.rms.client.mvp.views.interfaces.LoginView;
-import com.jgefroh.rms.client.mvp.views.util.BootstrapUtil;
 import com.jgefroh.rms.client.mvp.views.widgets.DismissableAlert;
 import com.jgefroh.rms.client.mvp.views.widgets.PasswordField;
 import com.jgefroh.rms.client.mvp.views.widgets.TextField;
@@ -127,7 +126,12 @@ public class LoginViewImpl extends Composite implements LoginView {
     public void showFormMessage(final String message) {
         alert.setLead("Error!");
         alert.setText(message);
-        alert.show();
+        if (message != null) {
+            alert.show();
+        }
+        else {
+            alert.hide();
+        }
     }
     
     @Override

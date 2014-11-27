@@ -1,0 +1,41 @@
+package com.jgefroh.rms.client.mvp.models;
+
+import java.io.Serializable;
+
+/**
+ * @author Joseph Gefroh
+ */
+public class PurchaseOrderVO implements Serializable, HasID {
+
+    //////////////////////////////////////////////////
+    // Fields
+    //////////////////////////////////////////////////
+    
+    private static final long serialVersionUID = 8451717932215936766L;
+    private Integer id;
+    private static int lastID = 0;
+
+    //////////////////////////////////////////////////
+    // Constructor
+    //////////////////////////////////////////////////
+    
+    public PurchaseOrderVO() {
+        id = lastID++;
+    }
+    
+    
+    //////////////////////////////////////////////////
+    // Getters
+    //////////////////////////////////////////////////
+    
+    @Override
+    public Integer getID() {
+        return this.id;
+    }
+    
+
+    //////////////////////////////////////////////////
+    // Setters
+    //////////////////////////////////////////////////
+
+}
